@@ -109,7 +109,7 @@ public class ValidateStandard implements Directive {
   @Override
   public UsageDefinition define() {
     UsageDefinition.Builder builder = UsageDefinition.builder(NAME);
-    builder.define(COLUMN, TokenType.COLUMN_NAME);
+    builder.define(COLUMN, TokenType.COLUMN_NAME, "The name of the column to validate");
     builder.define(
       STANDARD_SPEC,
       TokenType.IDENTIFIER,

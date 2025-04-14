@@ -56,7 +56,7 @@ public class ColumnsReplace implements Directive, Lineage {
   @Override
   public UsageDefinition define() {
     UsageDefinition.Builder builder = UsageDefinition.builder(NAME);
-    builder.define("sed-expression", TokenType.TEXT);
+    builder.define("sed-expression", TokenType.TEXT, "The sed-format expression to modify column names.");
     return builder.build();
   }
 

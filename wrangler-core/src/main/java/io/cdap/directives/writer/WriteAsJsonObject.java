@@ -57,7 +57,7 @@ public class WriteAsJsonObject implements Directive, Lineage {
   @Override
   public UsageDefinition define() {
     UsageDefinition.Builder builder = UsageDefinition.builder(NAME);
-    builder.define("column", TokenType.COLUMN_NAME);
+    builder.define("column", TokenType.COLUMN_NAME, "The name of the destination column where the JSON object will be written.");
     builder.define("col", TokenType.COLUMN_NAME_LIST, Optional.TRUE);
     return builder.build();
   }
@@ -65,7 +65,12 @@ public class WriteAsJsonObject implements Directive, Lineage {
   @Override
   public void initialize(Arguments args) throws DirectiveParseException {
     this.column = ((ColumnName) args.value("column")).value();
-    this.columns = ((ColumnNameList) args.value("col")).value();
+    Object colValue = args.value("col");
+    if (colValue instanceof ColumnNameList) {
+      this.columns = ((ColumnNameList) colValue).value();
+    } else {
+      throw new DirectiveParseException("Expected 'col' to be of type ColumnNameList.");
+    }
     this.gson = new Gson();
   }
 

@@ -32,6 +32,7 @@ import io.cdap.wrangler.api.annotations.Categories;
 import io.cdap.wrangler.api.lineage.Lineage;
 import io.cdap.wrangler.api.lineage.Many;
 import io.cdap.wrangler.api.lineage.Mutation;
+import io.cdap.wrangler.api.parser.ColumnName;
 import io.cdap.wrangler.api.parser.Identifier;
 import io.cdap.wrangler.api.parser.TokenType;
 import io.cdap.wrangler.api.parser.UsageDefinition;
@@ -62,7 +63,7 @@ public class ChangeColCaseNames implements Directive, Lineage {
   public void initialize(Arguments args) throws DirectiveParseException {
     toLower = true;
     if (args.contains("case")) {
-      Identifier identifier = args.value("case");
+      ColumnName identifier = args.value("case");
       String casing = identifier.value();
       if (casing.equalsIgnoreCase("upper") || casing.equalsIgnoreCase("uppercase")) {
         toLower = false;

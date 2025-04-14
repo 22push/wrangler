@@ -1,3 +1,4 @@
+// filepath: c:\Users\pushk\OneDrive\Documents\GitHub\wrangler\wrangler-core\src\main\java\io\cdap\wrangler\api\ContextStore.java
 /*
  *  Copyright © 2017-2019 Cask Data, Inc.
  *
@@ -14,22 +15,19 @@
  *  the License.
  */
 
-package io.cdap.wrangler.api.annotations;
+package io.cdap.wrangler.api;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * A interface defining the usage for the directive.
- */
-@Documented
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface  Usage {
-  String value() default "";
+public class ContextStore {
+    private final Map<String, Object> store = new HashMap<>();
 
-  // Removed invalid method as annotation attributes cannot have parameters
+    public Object get(String key) {
+        return store.get(key);
+    }
+
+    public void set(String key, Object value) {
+        store.put(key, value);
+    }
 }

@@ -50,7 +50,7 @@ public class UrlEncode implements Directive, Lineage {
   @Override
   public UsageDefinition define() {
     UsageDefinition.Builder builder = UsageDefinition.builder(NAME);
-    builder.define("column", TokenType.COLUMN_NAME);
+    builder.define("column", TokenType.COLUMN_NAME, "Specifies the column to be URL encoded.");
     return builder.build();
   }
 

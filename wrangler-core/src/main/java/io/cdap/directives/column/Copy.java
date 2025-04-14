@@ -54,8 +54,8 @@ public class Copy implements Directive, Lineage {
   @Override
   public UsageDefinition define() {
     UsageDefinition.Builder builder = UsageDefinition.builder(NAME);
-    builder.define("source", TokenType.COLUMN_NAME);
-    builder.define("destination", TokenType.COLUMN_NAME);
+    builder.define("source", TokenType.COLUMN_NAME, "The name of the source column.");
+    builder.define("destination", TokenType.COLUMN_NAME, "The name of the destination column.");
     builder.define("force", TokenType.BOOLEAN, Optional.TRUE);
     return builder.build();
   }

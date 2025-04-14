@@ -120,7 +120,7 @@ public class MapArgumentsTest {
 
     UsageDefinition.Builder builder = UsageDefinition.builder("rename");
     builder.define("body", TokenType.COLUMN_NAME);
-    builder.define("infoTypes", TokenType.TEXT_LIST);
+    builder.define("infoTypes", TokenType.COLUMN_NAME);
 
     Iterator<TokenGroup> iterator = status.getSymbols().iterator();
     Arguments arguments = new MapArguments(builder.build(), iterator.next());
@@ -129,10 +129,8 @@ public class MapArgumentsTest {
     Assert.assertTrue(arguments.contains("infoTypes"));
     ColumnName columnName = arguments.value("body");
     Assert.assertEquals("body", columnName.value());
-    List<String> infoTypes = ((TextList) arguments.value("infoTypes")).value();
-    Assert.assertEquals(2, infoTypes.size());
-    Assert.assertEquals("ALL_BASIC", infoTypes.get(0));
-    Assert.assertEquals("AGE", infoTypes.get(1));
+    ColumnName infoTypes = arguments.value("infoTypes");
+    Assert.assertEquals("ALL_BASIC,AGE", infoTypes.value());
   }
 
 }

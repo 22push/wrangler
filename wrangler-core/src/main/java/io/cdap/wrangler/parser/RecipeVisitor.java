@@ -16,9 +16,11 @@
 
 package io.cdap.wrangler.parser;
 
+import io.cdap.wrangler.api.ByteSize;
 import io.cdap.wrangler.api.LazyNumber;
 import io.cdap.wrangler.api.RecipeSymbol;
 import io.cdap.wrangler.api.SourceInfo;
+import io.cdap.wrangler.api.TimeDuration;
 import io.cdap.wrangler.api.Triplet;
 import io.cdap.wrangler.api.parser.Bool;
 import io.cdap.wrangler.api.parser.BoolList;
@@ -286,6 +288,18 @@ public final class RecipeVisitor extends DirectivesBaseVisitor<RecipeSymbol.Buil
     return builder;
   }
 
+  public class TokenBuildingVisitor extends DirectivesBaseVisitor<Token> {
+    @Override
+    public Token visitByteSizeArg(DirectivesParser.ByteSizeArgContext ctx) {
+      return new ByteSize(ctx.getText());
+    }
+  
+    @Override
+    public Token visitTimeDurationArg(DirectivesParser.TimeDurationArgContext ctx) {
+      return new TimeDuration(ctx.getText());
+    }
+  }
+  
   /**
    * This visitor methods extracts the list of booleans specified. It creates a token
    * type <code>BoolList</code> to be added to <code>TokenGroup</code>.

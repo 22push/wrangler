@@ -49,7 +49,7 @@ public class Upper implements Directive, Lineage {
   @Override
   public UsageDefinition define() {
     UsageDefinition.Builder builder = UsageDefinition.builder(NAME);
-    builder.define("column", TokenType.COLUMN_NAME);
+    builder.define("column", TokenType.COLUMN_NAME, "Name of the column to be converted to uppercase.");
     return builder.build();
   }
 

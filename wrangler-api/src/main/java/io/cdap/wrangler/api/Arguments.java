@@ -17,6 +17,8 @@
 package io.cdap.wrangler.api;
 
 import com.google.gson.JsonElement;
+
+import io.cdap.wrangler.api.parser.ColumnName;
 import io.cdap.wrangler.api.parser.Token;
 import io.cdap.wrangler.api.parser.TokenType;
 
@@ -45,7 +47,7 @@ public interface Arguments {
    * @param <T> type the token need to casted to.
    * @return object that extends <code>Token</code>.
    */
-  <T extends Token> T value(String name);
+  <T extends Token> ColumnName value(String name);
 
   /**
    * Returns the number of tokens that are mapped to arguments.

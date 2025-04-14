@@ -59,7 +59,7 @@ public class CompositeDirectiveRegistryTest {
     @Override
     public UsageDefinition define() {
       UsageDefinition.Builder builder = UsageDefinition.builder("my-test");
-      builder.define("column", TokenType.COLUMN_NAME);
+      builder.define("column", TokenType.COLUMN_NAME, "The name of the column to process.");
       return builder.build();
     }
 

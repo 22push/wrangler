@@ -180,10 +180,10 @@ public final class UsageDefinition implements Serializable {
      * defaulting the label to 'null' and setting the optional to FALSE.
      *
      * @param name of the token in the definition of a directive.
-     * @param type of the token to be extracted.
+     * @param columnName of the token to be extracted.
      */
-    public void define(String name, TokenType type) {
-      TokenDefinition spec = new TokenDefinition(name, type, null, currentOrdinal, Optional.FALSE);
+    public void define(String name, TokenType columnName) {
+      TokenDefinition spec = new TokenDefinition(name, columnName, null, currentOrdinal, Optional.FALSE);
       currentOrdinal++;
       tokens.add(spec);
     }
